@@ -1,0 +1,43 @@
+2026-03-03T13:27:01.406973Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+2026-03-03T13:27:01.699747Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe (mysqld 8.4.8) starting as process 21188
+2026-03-03T13:27:01.699787Z 0 [ERROR] [MY-010338] [Server] Can't find error-message file 'C:\Program\share\english\errmsg.sys'. Check error-message file location and 'lc-messages-dir' configuration directive.
+2026-03-03T13:27:01.737435Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2026-03-03T13:27:01.740519Z 1 [ERROR] [MY-012271] [InnoDB] The innodb_system data file 'ibdata1' must be writable
+2026-03-03T13:27:01.741281Z 1 [ERROR] [MY-012278] [InnoDB] The innodb_system data file 'ibdata1' must be writable
+2026-03-03T13:27:01.742008Z 1 [ERROR] [MY-010334] [Server] Failed to initialize DD Storage Engine
+2026-03-03T13:27:01.743881Z 0 [ERROR] [MY-010020] [Server] Data Dictionary initialization failed.
+2026-03-03T13:27:01.744491Z 0 [ERROR] [MY-010119] [Server] Aborting
+2026-03-03T13:27:01.745855Z 0 [System] [MY-010910] [Server] C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe: Shutdown complete (mysqld 8.4.8)  MySQL Community Server - GPL.
+2026-03-03T13:27:01.746689Z 0 [System] [MY-015016] [Server] MySQL Server - end.
+2026-03-03T13:28:30.426213Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+2026-03-03T13:28:30.689735Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe (mysqld 8.4.8) starting as process 13204
+2026-03-03T13:28:30.689784Z 0 [ERROR] [MY-010338] [Server] Can't find error-message file 'C:\Program\share\english\errmsg.sys'. Check error-message file location and 'lc-messages-dir' configuration directive.
+2026-03-03T13:28:30.708376Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2026-03-03T13:28:31.164685Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2026-03-03T13:28:31.310051Z 0 [System] [MY-010229] [Server] Starting XA crash recovery...
+2026-03-03T13:28:31.314882Z 0 [System] [MY-010232] [Server] XA crash recovery finished.
+2026-03-03T13:28:31.418349Z 0 [Warning] [MY-013829] [Server] Missing data directory for ICU regular expressions: C:\Program\lib\private\.
+2026-03-03T13:28:31.427794Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2026-03-03T13:28:31.428122Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2026-03-03T13:28:31.438440Z 0 [ERROR] [MY-010147] [Server] Too many arguments (first extra is 'Files\MySQL\MySQL').
+2026-03-03T13:28:31.440745Z 0 [ERROR] [MY-010119] [Server] Aborting
+2026-03-03T13:28:32.555975Z 0 [System] [MY-010910] [Server] C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe: Shutdown complete (mysqld 8.4.8)  MySQL Community Server - GPL.
+2026-03-03T13:28:32.556493Z 0 [System] [MY-015016] [Server] MySQL Server - end.
+2026-03-03T13:29:31.814953Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+2026-03-03T13:29:31.997818Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe (mysqld 8.4.8) starting as process 29528
+2026-03-03T13:29:32.046940Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2026-03-03T13:29:32.523769Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2026-03-03T13:29:32.937237Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2026-03-03T13:29:32.938477Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2026-03-03T13:29:33.004066Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2026-03-03T13:29:33.004329Z 0 [System] [MY-010931] [Server] C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe: ready for connections. Version: '8.4.8'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2026-03-03T13:32:37.931807Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+2026-03-03T13:32:38.149088Z 0 [System] [MY-010116] [Server] C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe (mysqld 8.4.8) starting as process 13164
+2026-03-03T13:32:38.210345Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2026-03-03T13:32:38.211776Z 1 [ERROR] [MY-012271] [InnoDB] The innodb_system data file 'ibdata1' must be writable
+2026-03-03T13:32:38.212285Z 1 [ERROR] [MY-012278] [InnoDB] The innodb_system data file 'ibdata1' must be writable
+2026-03-03T13:32:38.212781Z 1 [ERROR] [MY-010334] [Server] Failed to initialize DD Storage Engine
+2026-03-03T13:32:38.213608Z 0 [ERROR] [MY-010020] [Server] Data Dictionary initialization failed.
+2026-03-03T13:32:38.214038Z 0 [ERROR] [MY-010119] [Server] Aborting
+2026-03-03T13:32:38.215704Z 0 [System] [MY-010910] [Server] C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqld.exe: Shutdown complete (mysqld 8.4.8)  MySQL Community Server - GPL.
+2026-03-03T13:32:38.216508Z 0 [System] [MY-015016] [Server] MySQL Server - end.
