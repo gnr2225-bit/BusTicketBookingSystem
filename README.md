@@ -71,3 +71,6 @@ powershell -ExecutionPolicy Bypass -File scripts\stop-mysql-local.ps1
 ## Notes
 - App runtime data is currently in-memory (resets when app restarts)
 - SQL scripts are provided for relational schema creation and DB provisioning
+
+## dir /s /b src\*.java > sources.txt & javac -d out @sources.txt & del sources.txt & java -cp "out;lib\mysql-connector-j-8.4.0.jar" BusTicketSystem
+

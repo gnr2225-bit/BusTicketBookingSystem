@@ -17,6 +17,15 @@ public class ReportAdmin {
   }
 
   public void report() {
+    if (state.dbReady && state.bookings.isEmpty()) {
+      try {
+        state.store.loadAll(state.users, state.ops, state.routes, state.buses, state.bookings);
+        state.syncNextIds();
+      } catch (RuntimeException ex) {
+        Output.print("Failed to reload bookings from database: " + ex.getMessage());
+      }
+    }
+
     Output.head("Booking Report");
     List<List<String>> rows = new ArrayList<>();
     for (Booking b : state.bookings.values()) {

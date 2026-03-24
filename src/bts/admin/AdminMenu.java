@@ -13,6 +13,7 @@ public class AdminMenu {
   private final OperatorAdmin operatorAdmin;
   private final BusAdmin busAdmin;
   private final ReportAdmin reportAdmin;
+  private final BookingSeedService bookingSeedService;
 
   public AdminMenu(AppState state, Input input) {
     this.input = input;
@@ -20,6 +21,7 @@ public class AdminMenu {
     this.operatorAdmin = new OperatorAdmin(state, input);
     this.busAdmin = new BusAdmin(state, input);
     this.reportAdmin = new ReportAdmin(state);
+    this.bookingSeedService = new BookingSeedService(state);
   }
 
   public void loginAndRun() {
@@ -44,8 +46,9 @@ public class AdminMenu {
       Output.print("9. Update Bus");
       Output.print("10. Delete Bus");
       Output.print("11. Booking Reports");
-      Output.print("12. Back");
-      int c = input.readInt("Choose", 1, 12);
+      Output.print("12. Seed 5 Random Bookings");
+      Output.print("13. Back");
+      int c = input.readInt("Choose", 1, 13);
       switch (c) {
         case 1 -> routeAdmin.showRoutes();
         case 2 -> routeAdmin.addRoute();
@@ -58,7 +61,12 @@ public class AdminMenu {
         case 9 -> busAdmin.updateBus();
         case 10 -> busAdmin.deleteBus();
         case 11 -> reportAdmin.report();
-        case 12 -> { return; }
+        case 12 -> {
+          int created = bookingSeedService.seedRandomBookings(5);
+          Output.print("Random bookings created: " + created);
+          reportAdmin.report();
+        }
+        case 13 -> { return; }
       }
       input.pause();
     }
