@@ -8,7 +8,7 @@ Terminal-based Bus Ticket System for Windows.
 
 ## Compile
 ```powershell
-javac -d out src\*.java
+javac -d out (Get-ChildItem -Recurse -Filter *.java -Path src | ForEach-Object { $_.FullName })
 ```
 
 ## Run

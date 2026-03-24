@@ -1,3 +1,5 @@
+package bts.store;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -7,14 +9,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MySqlStore {
+import bts.model.*;
+
+public class MySqlStore implements Store {
   private static final String DEFAULT_URL = "jdbc:mysql://localhost:3306/bus_ticket_system?serverTimezone=Asia/Kolkata";
   private static final String DEFAULT_USER = "admin";
   private static final String DEFAULT_PASS = "password123";
@@ -23,7 +25,7 @@ public class MySqlStore {
   private final String user;
   private final String pass;
 
-  MySqlStore() {
+  public MySqlStore() {
     this.url = envOrDefault("BTS_DB_URL", DEFAULT_URL);
     this.user = envOrDefault("BTS_DB_USER", DEFAULT_USER);
     this.pass = envOrDefault("BTS_DB_PASS", DEFAULT_PASS);
@@ -38,7 +40,8 @@ public class MySqlStore {
     return DriverManager.getConnection(url, user, pass);
   }
 
-  boolean isAvailable() {
+  @Override
+  public boolean isAvailable() {
     try (Connection c = conn()) {
       return c.isValid(3);
     } catch (SQLException ex) {
@@ -46,8 +49,9 @@ public class MySqlStore {
     }
   }
 
-  void loadAll(Map<String, User> users, Map<String, Operator> ops, Map<Integer, Route> routes,
-               Map<Integer, Bus> buses, Map<Integer, Booking> bookings) {
+  @Override
+  public void loadAll(Map<String, User> users, Map<String, Operator> ops, Map<Integer, Route> routes,
+                      Map<Integer, Bus> buses, Map<Integer, Booking> bookings) {
     users.clear();
     ops.clear();
     routes.clear();
@@ -171,15 +175,18 @@ public class MySqlStore {
     }
   }
 
-  int maxRouteId() {
+  @Override
+  public int maxRouteId() {
     return maxId("SELECT COALESCE(MAX(route_id), 0) FROM routes");
   }
 
-  int maxBusId() {
+  @Override
+  public int maxBusId() {
     return maxId("SELECT COALESCE(MAX(bus_id), 1000) FROM buses");
   }
 
-  int maxBookingId() {
+  @Override
+  public int maxBookingId() {
     return maxId("SELECT COALESCE(MAX(booking_id), 50000) FROM bookings");
   }
 
@@ -193,22 +200,26 @@ public class MySqlStore {
     }
   }
 
-  void insertUser(User u) {
+  @Override
+  public void insertUser(User u) {
     executeUpdate("INSERT INTO users(phone, pass_hash, name, addr, email) VALUES(?,?,?,?,?)",
       u.phone, u.pass, u.name, u.addr, u.email);
   }
 
-  void updateUser(User u) {
+  @Override
+  public void updateUser(User u) {
     executeUpdate("UPDATE users SET pass_hash=?, name=?, addr=?, email=? WHERE phone=?",
       u.pass, u.name, u.addr, u.email, u.phone);
   }
 
-  void upsertOperator(Operator o) {
+  @Override
+  public void upsertOperator(Operator o) {
     executeUpdate("INSERT INTO operators(op_id, name, contact) VALUES(?,?,?) ON DUPLICATE KEY UPDATE name=VALUES(name), contact=VALUES(contact)",
       o.id, o.name, o.contact);
   }
 
-  void insertRoute(Route r) {
+  @Override
+  public void insertRoute(Route r) {
     try (Connection c = conn()) {
       c.setAutoCommit(false);
       try {
@@ -231,7 +242,8 @@ public class MySqlStore {
     }
   }
 
-  void updateRoute(Route r) {
+  @Override
+  public void updateRoute(Route r) {
     try (Connection c = conn()) {
       c.setAutoCommit(false);
       try {
@@ -258,7 +270,8 @@ public class MySqlStore {
     }
   }
 
-  void deleteRoute(int routeId) {
+  @Override
+  public void deleteRoute(int routeId) {
     executeUpdate("DELETE FROM routes WHERE route_id=?", routeId);
   }
 
@@ -285,21 +298,25 @@ public class MySqlStore {
     }
   }
 
-  void insertBus(Bus b) {
+  @Override
+  public void insertBus(Bus b) {
     executeUpdate("INSERT INTO buses(bus_id, op_id, route_id, bus_name, total_seats, dep_time) VALUES(?,?,?,?,?,?)",
       b.id, b.opId, b.routeId, b.name, b.seats, Time.valueOf(b.dep));
   }
 
-  void updateBus(Bus b) {
+  @Override
+  public void updateBus(Bus b) {
     executeUpdate("UPDATE buses SET op_id=?, route_id=?, bus_name=?, total_seats=?, dep_time=? WHERE bus_id=?",
       b.opId, b.routeId, b.name, b.seats, Time.valueOf(b.dep), b.id);
   }
 
-  void deleteBus(int busId) {
+  @Override
+  public void deleteBus(int busId) {
     executeUpdate("DELETE FROM buses WHERE bus_id=?", busId);
   }
 
-  void insertBooking(Booking b) {
+  @Override
+  public void insertBooking(Booking b) {
     try (Connection c = conn()) {
       c.setAutoCommit(false);
       try {
@@ -337,7 +354,8 @@ public class MySqlStore {
     }
   }
 
-  void updateBookingStatus(int bookingId, Status status) {
+  @Override
+  public void updateBookingStatus(int bookingId, Status status) {
     executeUpdate("UPDATE bookings SET status=? WHERE booking_id=?", status.name(), bookingId);
   }
 
